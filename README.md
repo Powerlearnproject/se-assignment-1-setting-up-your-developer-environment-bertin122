@@ -32,7 +32,168 @@ This assignment aims to familiarize you with the tools and configurations necess
    Explore available extensions, plugins, and add-ons for your chosen text editor or IDE to enhance functionality, such as syntax highlighting, linting, code formatting, and version control integration.
 
 9. Document Your Setup:
-    Create a comprehensive document outlining the steps you've taken to set up your developer environment. Include any configurations, customizations, or troubleshooting steps encountered during the process. 
+    Create a comprehensive document outlining the steps you've taken to set up your developer environment. Include any configurations, customizations, or troubleshooting steps encountered during the process.
+    ## Setting Up a Developer Environment
+
+ 1. **Choosing the Development Environment**
+   - **Operating System**: Ubuntu 22.04 LTS
+   - Integrated Development Environment (IDE)**: Visual Studio Code (VSCode)
+
+ 2.  Installing the Operating System**
+   - Ubuntu 22.04 LTS**:
+     - Download the ISO file from the [official Ubuntu website](https://ubuntu.com/download/desktop).
+     - Create a bootable USB drive using tools like Rufus or Etcher.
+     - Boot from the USB drive and follow the installation instructions.
+
+ 3. Initial System Setup
+   - Update and Upgrade System Packages
+     ```bash
+     sudo apt update
+     sudo apt upgrade
+     ```
+   - Installing Common Utilities
+     ```bash
+     sudo apt install -y curl wget git build-essential
+     ```
+
+ 4. Installing Development Tools
+   -Visual Studio Code
+     - Download the .deb package from the [official VSCode website](https://code.visualstudio.com/Download).
+     - Install VSCode:
+       ```bash
+       sudo dpkg -i code*.deb
+       sudo apt install -f  
+       ```
+   - Git
+     ```bash
+     sudo apt install git
+     ```
+     - Configure Git:
+       ```bash
+       git config --global user.name "Your Name"
+       git config --global user.email "your.email@example.com"
+       ```
+
+ 5. Setting Up Version Control
+- GitHub
+     - Create a GitHub account if you don’t have one.
+     - Generate SSH keys:
+       ```bash
+       ```
+       - Add the SSH key to the ssh-agent:
+         ```bash
+         eval "$(ssh-agent -s)"
+         ssh-add ~/.ssh/id_ed25519
+         ```
+       - Add the SSH key to your GitHub account by copying the key and pasting it into your GitHub SSH settings:
+         ```bash
+         cat ~/.ssh/id_ed25519.pub
+         ```
+
+ 6. Programming Languages and Frameworks
+   - Python
+     ```bash
+     sudo apt install python3 python3-pip
+     ```
+     - Create a virtual environment:
+       ```bash
+       python3 -m venv myenv
+       source myenv/bin/activate
+       ```
+     - Install necessary packages:
+       ```bash
+       pip install numpy pandas flask django
+       ```
+   - Node.js and np
+     ```bash
+     curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+     sudo apt install -y nodejs
+     ```
+   - Java:
+     ```bash
+     sudo apt install openjdk-11-jdk
+     ```
+
+ 7. Database Setup
+
+     ```bash
+     sudo apt install postgresql postgresql-contrib
+     sudo -i -u postgres
+     createuser --interactive
+     createdb mydatabase
+     ```
+
+ 8. Configuring IDE Extensions
+   - VSCode Extensions
+     - Python
+     - Prettier - Code formatter
+     - ESLint
+     - GitLens
+     - Docker
+     - Live Server
+   - Settings
+     - Configure settings in `settings.json`:
+       ```json
+       {
+         "editor.tabSize": 4,
+         "editor.formatOnSave": true,
+         "files.autoSave": "afterDelay",
+         "python.pythonPath": "myenv/bin/python"
+       }
+       ```
+
+ 9. Containerization
+   - Docker
+     ```bash
+     sudo apt install docker.io
+     sudo systemctl start docker
+     sudo systemctl enable docker
+     sudo usermod -aG docker ${USER}
+     ```
+     - Verify Docker installation:
+       ```bash
+       docker --version
+       ```
+   - Docker Compose
+     ```bash
+     sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+     sudo chmod +x /usr/local/bin/docker-compose
+     ```
+
+ 10. Troubleshooting Steps
+   - Fixing Dependency Issues
+     - If you encounter dependency issues, use:
+       ```bash
+       sudo apt --fix-broken install
+       ```
+   - Resolving Permission Issues
+     - If you face permission issues with Docker, ensure the user is added to the Docker group:
+       ```bash
+       sudo usermod -aG docker ${USER}
+       ```
+   - Common Python Errors
+     - If there are issues with pip packages, ensure `pip` is updated:
+       ```bash
+       pip install --upgrade pip
+       ```
+
+ 11. Customizations
+   - Bash Aliases
+     - Add useful aliases to `.bashrc` or `.zshrc`:
+       ```bash
+       alias ll='ls -alF'
+       alias la='ls -A'
+       alias l='ls -CF'
+       alias gs='git status'
+       alias gd='git diff'
+       ```
+     - Apply changes:
+       ```bash
+       source ~/.bashrc  # or ~/.zshrc
+       ```
+   - Prompt Customization
+     - Customize the command prompt by adding the following to `.bashrc`:
+       ```bash
 
 #Deliverables:
 - Document detailing the setup process with step-by-step instructions and screenshots where necessary.
